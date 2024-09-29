@@ -20,6 +20,9 @@ func NewSet[T comparable](strs ...T) *Set[T] {
 
 // 添加元素
 func (obj *Set[T]) Add(value T) {
+	if obj.Has(value) {
+		return
+	}
 	obj.lock.Lock()
 	obj.data[value] = struct{}{}
 	obj.lock.Unlock()
