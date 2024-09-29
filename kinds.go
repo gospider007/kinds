@@ -10,6 +10,11 @@ type Set[T comparable] struct {
 }
 
 // 新建客户端
+func NewSetWithMap[T comparable](datamap map[T]struct{}) *Set[T] {
+	return &Set[T]{data: datamap}
+}
+
+// 新建客户端
 func NewSet[T comparable](strs ...T) *Set[T] {
 	list := &Set[T]{data: map[T]struct{}{}}
 	for _, str := range strs {
